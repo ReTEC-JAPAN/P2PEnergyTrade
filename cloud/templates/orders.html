@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb col-12">
+      <li class="breadcrumb-item my-menu-text"><a href="/">Home</a></li>
+      <li class="breadcrumb-item my-menu-text"><a href="/dashboard">Trading</a></li>
+      <li class="breadcrumb-item my-menu-text active" aria-current="page">Place Order</li>
+      <li class="ml-auto nav-item dropdown">
+          <a class="nav-link dropdown-toggle my-menu-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="flase">Logged in</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item my-menu-text" href="/profile">Profile: {{session['username']}}</a>
+              <a class="dropdown-item my-menu-text" href="/logout">Logout</a>
+          </div>
+      </li>
+  </ol>
+</nav>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+            <div class="text-center">
+                <form class="form-signin" action="" method="post" name="order_form">
+                    <h1 class="h3 mb-3 font-weight-normal">Place your order</h1>
+                    <label for="inputQty" class="sr-only">Quantity (in Kwh)</label>
+                    <input type="text" name="qty" class="form-control" placeholder="Quantity (in Kwh)" required autofocus>
+                    <label for="inputRate" class="sr-only">Unit Rate (/ Kwh)</label>
+                    <input type="text" name="rate" class="form-control" placeholder="Unit Rate (/ Kwh)" required>
+                    <div>
+                        <select class="form-control" id="ordertype" name="ordertype">
+                            <option value="B">BUY</option>
+                            <option value="S">SALE</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <p class="lead"> Note: </p>
+            <p>All orders will be closed by 00:00 midnight and any outstanding orders will be forced closed. Any supply below MoQ of 0.1kwh will be discarded. </p>
+        </div>
+    </div>
+</div>
+
+  {% endblock %}

@@ -1,0 +1,201 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+    </script>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb col-12">
+    <li class="breadcrumb-item my-menu-text"><a href="/">Home</a></li>
+    <li class="breadcrumb-item my-menu-text active" aria-current="page">Dashboard</li>
+    <li class="ml-auto nav-item dropdown">
+        <a class="nav-link dropdown-toggle my-menu-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="flase">Logged in</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item my-menu-text" href="/profile">Profile: {{session['username']}}</a>
+            <a class="dropdown-item my-menu-text" href="/logout">Logout</a>
+        </div>
+    </li>
+  </ol>
+</nav>
+
+<div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+                <h6 class="bg-dark text-white text-center">EcoBox Status</h6><br>
+            {% if device.status == 'P': %}
+                <img class="image" src="static/images/pstatus.gif"  alt="" height=150 align="center">
+            {% elif device.status == 'I': %}
+                <img class="image" src="static/images/istatus.gif"  alt="" height=150 align="center">
+            {% elif device.status == 'R': %}
+                {%if switches.grid_dump == 'ON' or switches.grid_supply == 'ON': %}
+                    <img class="image" src="static/images/p2pstatus.gif"  alt="" height=150 align="center">
+                {% else %}
+                    <img class="image" src="static/images/rstatus.gif"  alt="" height=150 align="center">
+                {% endif %}
+            {% endif %}
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <h6 class="bg-dark text-white text-center">Configuration</h6>
+                <table class="table table-sm font-weight-light" style="font-size: .7em;">
+                    <tr>
+                        <td> Status: </td>
+                        <td>
+                            {% if  device.status == 'P': %} PROVISIONED
+                            {% elif device.status == 'I': %} INSTALLED
+                            {% elif device.status == 'R': %} REGISTERED
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Serial No: </td>
+                        <td>{{ device.srno }}</td>
+                    </tr>
+                    <tr>
+                        <td> SIM No: </td>
+                        <td> {{ device.uniqueid }}</td>
+                    </tr>
+                    <tr>
+                        <td> Location: </td>
+                        <td>{{ device.address }} </td>
+                    </tr>
+                     <tr>
+                        <td> HostName/IP: </td>
+                        <td>{{ device.ipaddress }} </td>
+                    </tr>
+                    <tr>
+                        <td> Communication IF: </td>
+                        <td>{{ device.ipaddress }} </td>
+                    </tr>
+                    <tr>
+                        <td> Mac Address: </td>
+                        <td>{{ device.macaddress }} </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <h6 class="bg-dark text-white text-center">Switch Status </h6>
+                <table class="table table-sm font-weight-light" style="font-size: .7em;">
+                    <tr>
+                        <td> PV Out: </td>
+                        <td><mark> {{ switches.pv_supply   }} </mark></td>
+                    </tr>
+                    <tr>
+                        <td> Battery Discharge: </td>
+                        <td><mark> {{ switches.bat_supply  }} </mark> </td>
+                    </tr>
+                    <tr>
+                        <td>Battery Charge: </td>
+                        <td><mark> {{ switches.bat_charge  }} </mark> </td>
+                    </tr>
+                    <tr>
+                        <td>EV Charge: </td>
+                        <td><mark> {{ switches.ev_charge   }} </mark></td>
+                    </tr>
+                    <tr>
+                        <td>Appliances: </td>
+                        <td><mark> {{ switches.appl_supply }} </mark></td>
+                    </tr>
+                    <tr>
+                        <td>Grid Supply: </td>
+                        <td><mark> {{ switches.grid_supply }} </mark></td>
+                    </tr>
+                    <tr>
+                        <td>Grid Dump: </td>
+                        <td><mark> {{ switches.grid_dump 	}} </mark></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <h6 class="bg-dark text-white text-center">Market Rate </h6>
+                <img src="static/images/markettrend.png" class="img-fluid">
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <h6 class="bg-dark text-white text-center"> Order History </h6>
+                <table class="table table-sm table-hover" style="font-size: .7em;" >
+                    <th class="thead-dark">Order No</th>
+                    <th class="thead-dark">Type</th>
+                    <th class="thead-dark">Quantity (Kwh)</th>
+                    <th class="thead-dark">Unit Rate(/Kwh)</th>
+                    <th class="thead-dark">Status</th>
+                    {% for order in orderlist %}
+                    <tr>
+                        <td> {{ order.orderid }} </td>
+                        <td> {% if order.type == 'B' %}BUY
+                             {% elif order.type =='S' %}SALE
+                             {% else %} {{order.type}}
+                             {% endif %}
+                        </td>
+                        <td> {{ order.qty }} </td>
+                        <td> {{ order.unitrate }} </td>
+                        <td> {% if order.status == 'O' %}OPEN
+                             {% elif order.status == 'C' %}CONTRACTED
+                             {% elif order.status == 'F' %}FULLFILLED
+                             {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <!-- img src="static/images/realtimedata.png" class="img-fluid" -->
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col-12">
+            <p class="lead"> Notes: </p>
+            <p style="font-size: .6em;">All orders will be closed by 00:00 midnight and any outstanding orders will be forced closed. Any supply below MoQ of 0.1kwh will be discarded </p>
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <h6 class="bg-dark text-white text-center"> Contract History </h6>
+                <table class="table table-sm table-hover" style="font-size: .7em;">
+                    <th class="thead-dark">Smart Contract</th>
+                    <!--th class="thead-dark">Timestamp</th-->
+                    <th class="thead-dark">Seller</th>
+                    <th class="thead-dark">Buyer</th>
+                    <th class="thead-dark">Quantity</th>
+                    <th class="thead-dark">Rate</th>
+                    <th class="thead-dark">Status</th>
+                    <!--th class="thead-dark">Fulfill Time</th -->
+                    {% for contract in contracts %}
+                        <tr>
+                            <td> {{ contract.contractid }} </td>
+                            <!--td> {{ contract.timestamp }} </td-->
+                            <td> {{ contract.uniqueid_seller }} </td>
+                            <td> {{ contract.uniqueid_buyer }} </td>
+                            <td> {{ contract.contract_qty }} </td>
+                            <td> {{ contract.contract_rate }} </td>
+                            <td> {% if contract.status == 'E' %}EXECUTED
+                                 {% elif contract.status == 'F' %}FULFILLED
+                                 {% elif contract.status == 'S' %}SETTLED
+                                 {% endif %}
+                            </td>
+                            <!-- td> {{ contract.fulfilledtime }} </td -->
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+</div>
+  {% endblock %}

@@ -1,0 +1,371 @@
+@import url("font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
+
+
+/* Reset */
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video,tab {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+        background: #EBEBEB;
+	}
+nav{
+    background: #EBEBEB;
+    width: 1000px;
+    text-align: right;
+    padding-right: 20px;
+    margin: auto;
+}
+#logo-wrapper {
+    padding: 10px 20px 0px 50px;
+}
+nav li{
+    display: inline-block;
+    padding-right: 10px;
+}
+nav li a{
+    display: block;
+    font-family: "Helvetica Neue";
+    font-size: 20;
+    color: #444;
+    text-decoration: none;
+    padding: 40px 10px 50px 10px;
+    transition: 0.5s;
+}
+nav li a:hover{
+    background: #cdcdcd;
+}
+.breadcrumb{
+    text-align: left;
+    margin: auto;
+    padding: 5px;
+    
+}
+.breadcrumb a{   
+    font-family:sans-serif;
+    font-size: .8em;
+    text-decoration: none;
+    padding: 5px;
+}
+.banner{
+    background: #fff;
+    height: 180px;
+    padding: 20px 20px; 
+    width: 1000px;
+    border: 1px;
+    border-color: #bbb;
+    border-radius: 5px;
+    margin: auto;
+    
+    
+}
+.banner-left{
+    width:650px; 
+    display: inline-block;
+}
+.banner-left h1{
+    font-family: "Helvetica Neue";
+    font-weight:bold;
+    color: #6F6E6E;
+    font-size: 1.4em;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    background: #fff;
+}
+.banner-left h2{
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    font-size: 1.1em;
+    text-align: center;
+    color: #6F6E6E;
+    background: #fff;
+}
+.banner-left p{
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    font-size: .6em;
+    text-align:justify;
+    color: #6F6E6E;
+    padding: 30px 20px 10px 20px;
+    background: #fff;
+}
+
+.banner-right{
+    width:300px;
+    display: inline-block;
+    background: #fff;
+}
+.banner-right .button{
+    background: #0090C5;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: .9em;
+    height: 50px;
+    width:300px;
+    padding: 10px 10px;
+    margin: 10px 0px;
+    
+}
+.hot-topic{
+    margin: auto;
+    height: 250px;
+    width:1000px;
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    font-size: 1em;
+    text-align: center;
+    color: #fff;
+    
+}
+.hot-topic .htopic1{
+    height: 200px;
+    width:280px;
+    background: #75A056;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    
+}
+.hot-topic .htopic2{
+    height: 200px;
+    width:280px;
+    background: #063D60;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+
+}
+.hot-topic .htopic3{
+    height: 200px;
+    width:280px;
+    background: #6B586B;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+}
+
+body {
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    font-size: 1.3em;        
+}
+
+.rightside-bar{
+    background: #fff;
+    padding: 20px 20px; 
+    width: 1000px;
+    border: 1px;
+    border-color: #bbb;
+    margin: auto;
+}
+.breadcrumb{
+    width: 1000px;
+    margin: auto;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+.breadcrumb-menu{
+    font-size: .9em;
+    float: left;
+}
+.breadcrumb-profile{
+    font-size: .9em;
+    float: right;
+}
+.login-user{
+    padding: 20px 20px; 
+    width: 1000px;
+    margin: auto;
+}
+.no-bar{
+    width: 1000px;
+    margin:auto;
+}
+.rightside-bar p{
+    font-family: "Helvetica Neue";
+    background: #fff;
+    color: #6F6E6E;
+    font-size: .7em;
+    font-weight: 200; 
+    text-align: justify;
+}
+.rightside-bar a{
+    font-family: "Helvetica Neue";
+    background: #fff;
+    color: ##444;;
+    font-size: .7em;
+    font-weight: 200;
+    text-align: justify;
+}
+.main-col{
+    width:65%;
+    display:inline-block;
+    margin: 10px;
+    vertical-align: top;
+    background: #fff;
+}
+.rightside-bar .right-col{
+    width:30%;
+    display:inline-block;
+    margin: 5px;
+    vertical-align: top;
+    background: #fff;
+    
+}
+.rightside-bar li{
+    display: block;
+    padding-right: 10px;
+    background: #fff;
+}
+.rightside-bar h1{
+    font-family: "Helvetica Neue";
+    background: #fff;
+    color: #6F6E6E;
+    font-size: 1.2em;
+    font-weight: 200; 
+    text-align: justify;
+}
+
+.form label{
+    font-family: "Helvetica Neue";
+    background: #fff;
+    color: #6F6E6E;
+    font-size: .6em;
+    font-weight: 200; 
+    margin: 15px 15px;
+}
+.form input{
+    font-family: "Helvetica Neue";
+    background: #FCE1BA;
+    color: #6F6E6E;
+    font-size: .6em;
+    font-weight: 200; 
+    height: 25px;
+    width: 400px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    padding-left: 2px;
+    border-radius: 4px;
+    border-style: none;
+    box-shadow: inset 1px 1px 0px 0px #888;
+}
+.form select {
+    font-family: "Helvetica Neue";
+    background: #FCE1BA;
+    color: #6F6E6E;
+    font-size: .6em;
+    font-weight: 200;
+    height: 25px;
+    width: 400px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    padding: 2px;
+    border-radius: 4px;
+    border-style: none;
+}
+
+.form button{
+    font-family: "Helvetica Neue";
+    background: #203864;
+    color: #fff;
+    font-size: .7em;
+    font-weight: 500; 
+    height: 30px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 4px;
+    border-style: none;
+    box-shadow: outset 0px 0px 1px 1px #888;
+    margin-top:20px;
+    margin-left: 15px;
+}
+.right-col{
+    background: #fff;
+}
+.right-col a{
+    font-family: "Helvetica Neue";
+    background: #fff;
+    color: #0673E0;
+    font-size: .7em;
+    font-weight: 200; 
+}
+.footer{
+    width: 100%;
+    height: 400px;
+    background: #1C1B1B;
+    align-content: flex-end;
+    padding: 40px;
+    color: #6F6E6E;
+}
+
+/* Style the tab */
+.tab {
+    overflow:auto;
+    background-color: #fff;
+    border-bottom: 2px solid #FC7502;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    font-family: "Helvetica Neue";
+    font-size: .7em;
+    background: #fff;
+    width: 90px;
+    color: #6F6E6E;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 0px;
+    transition: 0.3s;
+    border: 1px solid #FC7502;
+    border-bottom: 0px;
+    border-radius: 3px 3px 0px 0px;
+    margin-right:10px;
+    margin-left: 5px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    background: #fff;
+    padding: 6px 12px;
+}
+
+table {
+    font-family: "Helvetica Neue";
+    font-size: .6em;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #ccc;
+}
+
+

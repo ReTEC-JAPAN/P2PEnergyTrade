@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+
+<script>
+  function() {
+    $('btn-select').click(function() {
+    var value = 'test' $('input').val();
+    $('devicesrno').html(value);
+    $('EcoBoxList').modal('hide');
+    });
+   };
+</script>
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                <div class="text-center">
+                    <form class="form-signin" action="" method="post" name="registerbox_form">
+                        <h5 class="text-left">User Registration</h5>
+                        <label for="userid" class="sr-only">User ID</label>
+                        <input type="text" name="userid" class="form-control" placeholder="User ID" required autofocus>
+                        <label for="name" class="sr-only">Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                        <label for="passwd" class="sr-only">Password</label>
+                        <input type="password" name="passwd" class="form-control" placeholder="Password" required>
+                        <label for="passwd-confirm" class="sr-only">Password Confirm</label>
+                        <input type="password" name="passwd-confirm" class="form-control" placeholder="Password Confirmation" required >
+                        <label for="email" class="sr-only">Email Address</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                        <label for="billing-address" class="sr-only">Billing Address</label>
+                        <input type="text" name="billing-address" class="form-control" placeholder="Billing Address" required >
+                        <label for="devicesrno" class="sr-only">EcoBox Sr#</label>
+                        <input type="text" name="devicesrno" class="form-control" placeholder="EcoBox Serial No" required>
+                        <a class="btn btn-lg btn-secondary btn-block" data-toggle="modal" data-target="#EcoBoxList">Select EcoBox</a>
+                            <div class="modal" id="EcoBoxList" tabindex="-1" role="dialog" aria-labelledby="SelectEcoBox" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="SelectEcoBox">Select EcoBox</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-sm table-hover">
+                                                <th class="thead-dark">Select</th>
+                                                <th class="thead-dark"> Sr No  </th>
+                                                <th class="thead-dark"> Installed Location </th>
+                                                <th class="thead-dark"> Unique Identifier</th>
+                                                <th class="thead-dark"> Status</th>
+                                                    {% for device in devicelist %}
+                                                <tr>
+                                                    <td>
+                                                        <input class="form-check-input align-items-center" type="radio" name="selectRadio" id="selectRadios1" value={{device.srno}}>
+                                                    </td>
+                                                    <td> {{ device.srno }} </td>
+                                                    <td> {{ device.address }} </td>
+                                                    <td> {{ device.uniqueid }} </td>
+                                                    <td> {{ device.status }} </td>
+                                                </tr>
+                                                    {% endfor %}
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id="btn-close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button id="btn-select" type="button" class="btn btn-primary">Select</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <label for="keypair" class="sr-only">Key Pair</label>
+                        <input type="text-area" name="keypair" class="form-control" placeholder="Public Key" required>
+                        <label for="authcode" class="sr-only">Authorisation Code</label>
+                        <input type="text" name="authcode" class="form-control" placeholder="Authorization Code" required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <p class="lead"> Need any help? </p>
+            <p>We are a energy trading platform enabling utilities to build a better relationship with customers and co-create value for the betterment of the environment. Putting the power back in the hands of the consumer to choose from where and who their energy comes from and how its produced. </p>
+            </div>
+        </div>
+    </div>
+  {% endblock %}

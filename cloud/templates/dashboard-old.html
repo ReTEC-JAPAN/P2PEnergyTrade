@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+    </script>
+    <div class="breadcrumb">
+            <div class="breadcrumb-menu">
+                <a href="/">Home</a>>><a href="/dashboard">Dashboard</a>
+            </div>
+            <div class="breadcrumb-profile"> Welcome <a href="/profile"> {{session['username']}} </a><a href="/logout">Logout</a>
+            </div>
+
+    </div>
+
+    <div class="rightside-bar">
+        <div class="main-col">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Trading')"><img src="static/images/trading.png" height=20px /><br> P2P Trading </button>
+                <button class="tablinks" onclick="openTab(event, 'Generation')"><img src="static/images/generation.png" height=20px /><br>Generation</button>
+                <button class="tablinks" onclick="openTab(event, 'Storage')"><img src="static/images/storage.png" height=20px /><br>Storage</button>
+                <button class="tablinks" onclick="openTab(event, 'Consumption')"><img src="static/images/consumption.png" height=20px /><br>Consumption</button>
+                <button class="tablinks" onclick="openTab(event, 'Report')"><img src="static/images/report.png" height=20px /><br>Reports</button>
+                <button class="tablinks" onclick="openTab(event, 'Analytic')"><img src="static/images/analytics.png" height=20px /><br>Analyics</button>
+            </div>
+            <div id="Trading" class="tabcontent">
+                <h1>Market Trend</h1>
+                    <img src="static/images/markettrend.png" height=20px >
+                    <hr>
+                <h1>Placed Orders</h1>
+
+                <p>Note: All trades will be automatically closed by the midnight localtime. The minimum unit of trade (MTU) is 0.1kwh</p>
+                <hr>
+                <h1>Order History</h1>
+                <hr>
+            </div>
+            <div id="Generation" class="tabcontent">
+                <h1>Real Time Statistics</h1>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <h1>Historical Trend</h1>
+                <p>Ecobox has recorded following generation pattern.</p>
+            </div>
+            <div id="Storage" class="tabcontent">
+                <h1>Storage Time Statistics</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+            </div>
+            <div id="Consumption" class="tabcontent">
+                <h1>Consumption</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div id="Report" class="tabcontent">
+                <h1>Realtime Statistics</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div id="Analytic" class="tabcontent">
+                <h1>Trends and Patterns</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="right-col">
+            <h1> Latest Energy News</h1>
+            <p> Lorem ipsum dolor sit amet. Mei utamur salutatus conceptam an. Ei mentitum ocurreret sea. His an animal signiferumque, id pro illum tollit tincidunt. In usu nibh appellantur. Id eos fugit ignota albucius. Ut mel liber platonem concludaturque.</p>
+            <h1> How RETC P2P Energy Trading works ?</h1>
+            <p> RETC solutions involves both trading software  with integrated hardware box, called EcoBox which will be installed at users location. Trading can be done through portal or smartphone app which will send necessary instructions to EcoBox to control the energy flow.  Following are the four simple steps for energy trading.</p>
+            <h1> Lorem ipsum dolor sit amet </h1>
+            <p> Mei utamur salutatus conceptam an. Ei mentitum ocurreret sea. His an animal signiferumque, id pro illum tollit tincidunt. In usu nibh appellantur. Id eos fugit ignota albucius. Ut mel liber platonem concludaturque.</p>
+       </div>
+
+    </div>
+  {% endblock %}

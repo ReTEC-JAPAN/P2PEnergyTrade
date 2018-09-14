@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to ReTC Portal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+       <a class="navbar-brand" href="/"><img src="../static/images/logo.png"></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarResponsive">
+           <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                   <a class="nav-link" href="/">Home</a>
+               </li>
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="flase">Trading</a>
+                   <div class="dropdown-menu">
+                       <a class="dropdown-item" href="/register">Registration</a>
+                       <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                       <a class="dropdown-item" href="/orders">Place Order</a>
+                       <a class="dropdown-item" href="/trends">Current Trend</a>
+                       <a class="dropdown-item" href="/reports">Reports</a>
+                   </div>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/">Storage</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/">Certificate</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/">Analytics</a>
+               </li>
+           </ul>
+       </div>
+    </div>
+</nav>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block body %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+  <!--  {% extends "footer.html" %} -->
+
+</body>
+
+</html>

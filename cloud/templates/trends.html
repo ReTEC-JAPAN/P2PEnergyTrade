@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb col-12">
+      <li class="breadcrumb-item my-menu-text"><a href="/">Home</a></li>
+      <li class="breadcrumb-item my-menu-text"><a href="/dashboard">Trading</a></li>
+      <li class="breadcrumb-item my-menu-text active" aria-current="page">User Trends</li>
+      <li class="ml-auto nav-item dropdown">
+          <a class="nav-link dropdown-toggle my-menu-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="flase">Logged in</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item my-menu-text" href="/profile">Profile: {{session['username']}}</a>
+              <a class="dropdown-item my-menu-text" href="/logout">Logout</a>
+          </div>
+      </li>
+  </ol>
+</nav>
+
+<div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <h4>Trends</h4>
+                <img src="static/images/gen-cons-trend.png" class="img-fluid">
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col-12 text-center">
+                <h4> Metered Data </h4>
+                <table class="table table-sm table-hover">
+                    <th class="thead-dark">Timestamp</th>
+                    <th class="thead-dark">Production (Kwh)</th>
+                    <th class="thead-dark">Consumption(Kwh)</th>
+                    <th class="thead-dark">Drawn from Grid(/Kwh)</th>
+                    <th class="thead-dark">Capacity Available</th>
+                    <th class="thead-dark">Buy Potential</th>
+                    <th class="thead-dark">Sale Potential</th>
+                    {% for trend in trends %}
+                        <tr>
+                            <td> {{ trend.timestamp }} </td>
+                            <td> {{ trend.production }} </td>
+                            <td> {{ trend.consumption }} </td>
+                            <td> {{ trend.grid_cons }} </td>
+                            <td> {{ trend.capacity_available }} </td>
+                            <td> {{ trend.buy_potential }} </td>
+                            <td> {{ trend.sale_potential }} </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

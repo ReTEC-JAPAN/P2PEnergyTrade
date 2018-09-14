@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+<div class="breadcrumb">
+    <a href="/">Home</a>><a href="/login">Energy Trading</a>
+    </div>
+    <div class="rightside-bar">
+        <div class="main-col">
+            <h1> ADMIN PANEL </h1>
+            <h2>Registered Users</h2>
+            {% for user in userlist %}
+            <p>{{ user }} </p>
+            {% endfor %}
+            <h2>Installed Devices</h2>
+            {% for device in devicelist %}
+            <p>{{ device }} </p>
+            {% endfor %}
+            <h3>Configuration</h3>
+            {% for config in configlist %}
+            <p>{{ config }} </p>
+            {% endfor %}
+            <h2>Current Switch State</h2>
+            {% for state in statelist %}
+            <p>{{ state }} </p>
+            {% endfor %}
+            <h2>Orders</h2>
+            {% for order in orderlist %}
+            <p>{{ order }} </p>
+            {% endfor %}
+            <h2>Trades</h2>
+            {% for trade in tradelist %}
+            <p>{{ trade }} </p>
+            {% endfor %}
+            <h2>Switch State Log</h2>
+            {% for statelog in statelogs %}
+            <p>{{ statelog }} </p>
+            {% endfor %}
+        </div>
+        <div class="right-col">
+           <h1> What is P2P trading ?</h1>
+            <p> Lorem ipsum dolor sit amet. Mei utamur salutatus conceptam an. Ei mentitum ocurreret sea. His an animal signiferumque, id pro illum tollit tincidunt. In usu nibh appellantur. Id eos fugit ignota albucius. Ut mel liber platonem concludaturque.</p>
+            <h1> How RETC P2P Energy Trading works ?</h1>
+            <p> RETC solutions involves both trading software  with integrated hardware box, called EcoBox which will be installed at users location. Trading can be done through portal or smartphone app which will send necessary instructions to EcoBox to control the energy flow.  Following are the four simple steps for energy trading.</p>
+            <h1> Lorem ipsum dolor sit amet </h1>
+            <p> Mei utamur salutatus conceptam an. Ei mentitum ocurreret sea. His an animal signiferumque, id pro illum tollit tincidunt. In usu nibh appellantur. Id eos fugit ignota albucius. Ut mel liber platonem concludaturque.</p>
+       </div>
+    </div>
+  {% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+   {% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Trading Login</li>
+  </ol>
+</nav>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+            <div class="text-center">
+                <form class="form-signin" action="" method="post" name="login_form">
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputUserID" class="sr-only">Login</label>
+                    <input type="text" name="userid" class="form-control" placeholder="Login" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="passwd" class="form-control" placeholder="Password" required>
+                    <div class="checkbox mb-3">
+                        <label><input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+                <a class="btn btn-link" href="">Forget Password </a><br>
+                <a class="btn btn-link" href="/register"> New User Sign-up </a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <p class="lead"> Need any help? </p>
+            <p>We are a energy trading platform enabling utilities to build a better relationship with customers and co-create value for the betterment of the environment. Putting the power back in the hands of the consumer to choose from where and who their energy comes from and how its produced. </p>
+        </div>
+    </div>
+</div>
+
+  {% endblock %}
